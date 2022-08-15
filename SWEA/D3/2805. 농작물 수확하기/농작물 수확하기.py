@@ -3,7 +3,7 @@ def benefit(arr, n):
         return sum(arr[n:-n])
     elif n == 0:
         return sum(arr)
-
+ 
 T = int(input())
 for t in range(1, T+1):
     N = int(input())
@@ -14,7 +14,7 @@ for t in range(1, T+1):
     j = [j for j in range(N//2, -1, -1)]
     for h in range(N//2+1):
         ans += benefit(arr[i[h]], j[h])
-
+ 
     for h in range(N//2+1, N):
         ans += benefit(arr[h], h-(N//2))
     print(ans)
