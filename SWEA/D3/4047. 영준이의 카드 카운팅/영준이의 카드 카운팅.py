@@ -1,42 +1,26 @@
 T = int(input())
 for t in range(1, T+1):
+    arr = list(input())
     print(f'#{t}', end=' ')
-    arr = input()
-    # print(arr)
-    card_case = [13] * 4
-    ans = 0
-    # 슬라이싱을 통해 카드를 잘라줌
-    card_list = []
-    for i in range(0, len(arr), 3):
-        card_list.append(arr[i:i+3])
-    # print(card_list)
-    
-    # 딕셔너리로 저장
-    card_dict = {}
-    for i in card_list:
-        try: card_dict[i] += 1
-        except: card_dict[i] = 1
-    # print(card_dict)
-
-    key = list(card_dict.keys())
-    value = list(card_dict.values())
+    cnt = [13] * 4
+    N = len(arr)
+    card_lst = []
+    for i in range(0, N, 3):
+        card_lst.append(''.join(arr[i:i + 3]))
     flag = 1
-    for i in range(len(value)):
-        if value[i] > 1:
-            card_case = 'ERROR'
-            break
+    for x in range(len(card_lst) - 1):
+        for y in range(x + 1, len(card_lst)):
+            if card_lst[x] == card_lst[y]:
+                flag = 0
+                break
+    card = ['S', 'D', 'H', 'C']
+    for j in range(len(card_lst)):
+        for h in range(4):
+            if card_lst[j][0] == card[h]:
+                cnt[h] -= 1
+                break
 
-        else:
-            if key[i][0] == "S":
-                card_case[0] -= 1
-            elif key[i][0] == "D":
-                card_case[1] -= 1
-            elif key[i][0] == "H":
-                card_case[2] -= 1
-            elif key[i][0] == "C":
-                card_case[3] -= 1
-
-    if card_case == 'ERROR':
-        print(card_case)
+    if flag:
+        print(*cnt)
     else:
-        print(*card_case)
+        print('ERROR')
