@@ -1,3 +1,4 @@
+
 def f(k):
     global max_v
     # 이동 횟수와 k가 같아지면 max_v를 바꿔줌
@@ -8,7 +9,7 @@ def f(k):
         return
     # memorization에 있는거면 넘어가기
     if int(''.join(arr)) in memorization:
-        # 왜 break와 pass는 오류가 뜨는지..
+        # 재귀함수에서 return은 함수를 호출하는 쪽으로 이동한다.
         return
     # memorization에 v를 추가
     memorization.append(int(''.join(arr)))
