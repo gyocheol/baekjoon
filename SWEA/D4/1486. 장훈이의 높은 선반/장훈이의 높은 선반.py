@@ -1,5 +1,7 @@
 def comb(n, r, k, s):
     global ans
+    if ans < sum(t) - B:
+        return
     if k == r:
         if 0 <= sum(t) - B < ans:
             ans = sum(t) - B
