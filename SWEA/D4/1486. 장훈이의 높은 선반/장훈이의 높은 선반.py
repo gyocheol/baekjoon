@@ -18,7 +18,8 @@ for t in range(int(input())):
     arr = list(map(int, input().split()))
     arr.sort(reverse=True)
     ans = 10**10
-    for i in range(1, N+1):
+    for i in range(N, 0, -1):
+        # print(i)
         R = i
         t = [0] * R
         comb(N, R, 0, 0)
