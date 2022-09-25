@@ -1,46 +1,40 @@
-# 가로
-def solve(a):
+def solve1():
     ans = 0
     for i in range(N):
-        total = 0
+        cnt = 0
         for j in range(M):
-            if a[i][j]:
-                total += a[i][j]
-
-            elif a[i][j] == 0:
-                if total > ans:
-                    ans = total
-                    total = 0
-
-        if total > ans:
-            ans = total
+            if arr[i][j] == 1:
+                cnt += 1
+            else:
+                if ans < cnt:
+                    ans = cnt
+                cnt = 0
+        if ans < cnt:
+            ans = cnt
     return ans
 
 
-# 세로
-def solve2(a):
+def solve2():
     ans = 0
     for i in range(M):
-        total = 0
+        cnt = 0
         for j in range(N):
-            if a[j][i]:
-                total += a[j][i]
-
-            elif a[j][i] == 0:
-                if total > ans:
-                    ans = total
-                    total = 0
-        if total > ans:
-            ans = total
+            if arr[j][i] == 1:
+                cnt += 1
+            else:
+                if ans < cnt:
+                    ans = cnt
+                cnt = 0
+        if ans < cnt:
+            ans = cnt
     return ans
 
 
-T = int(input())
-for t in range(1, T+1):
-    print(f'#{t}', end=' ')
+for t in range(int(input())):
     N, M = map(int, input().split())
     arr = [list(map(int, input().split())) for _ in range(N)]
-    if solve(arr) > solve2(arr):
-        print(solve(arr))
+    print(f'#{t+1}', end=' ')
+    if solve1() > solve2():
+        print(solve1())
     else:
-        print(solve2(arr))
+        print(solve2())
