@@ -1,5 +1,5 @@
 N = int(input())
-for i in range(1, N):
+for i in range(max(1, N-9*len(str(N))), N):
     str_N = str(i)
     total = 0
     for j in str_N:
