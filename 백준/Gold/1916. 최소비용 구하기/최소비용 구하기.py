@@ -1,18 +1,22 @@
-import heapq
+from collections import deque
+import sys
+input = sys.stdin.readline
 
-def dijkstra(s):
-    D[s] = 0
-    q = [(0, start)]
-    while q:
-        w, cur = heapq.heappop(q)
-        if D[cur] < w:
+
+def dijkstra(x):
+    Q = deque()
+    Q.append((x, 0))
+    D[x] = 0
+    while Q:
+        ss, cost = Q.popleft()
+        if D[ss] < cost:
             continue
 
-        for d, ww in adj[cur]:
-            cost = D[cur] + ww
-            if D[d] > cost:
-                D[d] = cost
-                heapq.heappush(q, (cost, d))
+        for ee, cc in adj[ss]:
+            if D[ee] > cost + cc:
+                D[ee] = cost + cc
+                Q.append((ee, cost + cc))
+
 
 
 V = int(input())
@@ -20,12 +24,11 @@ E = int(input())
 adj = [[] for _ in range(V+1)]
 D = [10**10] * (V+1)
 
-for i in range(E):
-    s, e, d = map(int, input().split())
-    adj[s].append((e, d))
+for _ in range(E):
+    s, e, c = map(int, input().split())
+    adj[s].append((e, c))
 
 start, end = map(int, input().split())
 
-# print(adj)
 dijkstra(start)
 print(D[end])
