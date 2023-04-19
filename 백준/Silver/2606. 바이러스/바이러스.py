@@ -1,24 +1,26 @@
 import sys
 input = sys.stdin.readline
 
-def dfs(x):
+def dfs(v):
     global cnt
-    visited[x] = True
-    for y in adj[x]:
-        if visited[y]: continue
+    # cnt += 1
+    visited[v] = True
+    for i in adj[v]:
+        if visited[i]: continue
         cnt += 1
-        dfs(y)
+        visited[i] = True
+        dfs(i)
 
-# 인자리스트 받는 형식
 
-N = int(input())
-M = int(input())
-adj = [[] for _ in range(N+1)]      # 인자리스트
-cnt = 0
-visited = [False] * (N+1)           # 1 ~ N 까지 이므로 (N+1) 을 곱해줌
-for _ in range(M):
+n = int(input())
+m = int(input())
+
+adj = [[] for _ in range(n+1)]
+visited = [False] * (n+1)
+for i in range(m):
     x, y = map(int, input().split())
     adj[x].append(y)
     adj[y].append(x)
+cnt = 0
 dfs(1)
 print(cnt)
