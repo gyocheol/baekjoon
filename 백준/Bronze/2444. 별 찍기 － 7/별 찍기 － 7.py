@@ -1,15 +1,7 @@
 n = int(input())
 
-i = n
-while i:
-    for j in range(1, n*2, 2):
-        i -= 1
-        print(" " * i + "*" * j)
+for i in range(1, n+1):
+    print(" " * (n-i) + "*" * (2*i-1))
 
-x = 1
-while x:
-    if x > n - 1:
-        break
-    for j in range(n*2-3, 0, -2):
-        print(" " * x + "*" * j)
-        x += 1
+for i in range(1, n):
+    print(" " * i + "*" * (2*n-2*i-1))
