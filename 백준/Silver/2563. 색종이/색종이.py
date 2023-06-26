@@ -10,6 +10,6 @@ for _ in range(t):
         for j in range(y-1, y+9):
             ans_list[i][j] = True
 ans = 0
-for i in range(100):
-    ans += ans_list[i].count(True)
+for i in ans_list:
+    ans += i.count(True)
 print(ans)
