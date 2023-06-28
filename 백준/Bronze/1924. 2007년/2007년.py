@@ -7,5 +7,4 @@ x, y = map(int, input().split())
 for i in range(x-1):
     day += month_list[i]
 
-idx = (day + y) % 7
-print(day_of_the_week[idx])
+print(day_of_the_week[(day + y) % 7])
