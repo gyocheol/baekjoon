@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 k, n = map(int, input().split())
 lan_list = [int(input()) for _ in range(k)]
 start, end = 1, max(lan_list)
