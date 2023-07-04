@@ -1,30 +1,17 @@
-S = list(input())
-flag = 0
+S = list(input()) + [" "]
+
 arr = ""
 stack = ""
 for i in S:
-    if i == "<":
-        flag = 1
-        if stack:
-            arr += stack[::-1]
+    if i == ">":
+        arr += stack + i
         stack = ""
-    elif i == ">":
-        arr += stack
+    elif i == "<" and stack:
+        arr += stack[::-1]
+        stack = i
+    elif i == " " and "<" not in stack:
+        arr += stack[::-1] + i
         stack = ""
-        flag = 0
-    if not flag:
-        if i == " ":
-            arr += stack[::-1] + " "
-            stack = ""
-        else:
-            if i == ">":
-                arr += i
-            else: stack += i
     else:
         stack += i
-if stack:
-    if stack[-1] == ">":
-        arr += stack
-    else:
-        arr += stack[::-1]
-print(arr)
+print(arr.rstrip())
