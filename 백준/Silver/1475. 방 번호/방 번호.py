@@ -1,12 +1,12 @@
-room = input()
-ans_list = [0] * 11
+n = input()
+adj = [0] * 11
 
-for i in room:
-    if i == '6' or i == '9':
-        if ans_list[6] == ans_list[9]:
-            ans_list[6] += 1
+for i in n:
+    if i == "9" or i == "6":
+        if adj[9] >= adj[6]:
+            adj[6] += 1
         else:
-            ans_list[9] += 1
+            adj[9] += 1
     else:
-        ans_list[int(i)] += 1
-print(max(ans_list))
+        adj[int(i)] += 1
+print(max(adj))
