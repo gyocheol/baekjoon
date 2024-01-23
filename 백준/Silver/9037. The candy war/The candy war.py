@@ -3,13 +3,13 @@ def odd_check():
         if candies[i] % 2:
             candies[i] += 1
 
-def candy_check():
-    flag = True
-    for candy in candies[1:]:
-        if candies[0] != candy:
-            flag = False
-            break
-    return flag
+# def candy_check():
+#     flag = True
+#     for candy in candies[1:]:
+#         if candies[0] != candy:
+#             flag = False
+#             break
+#     return flag
 
 for _ in range(int(input())):
     roof = 0
@@ -20,9 +20,10 @@ for _ in range(int(input())):
     else:
         while True:
             odd_check()
-            check = candy_check()
-            if check:
-                break
+            # check = candy_check()
+            # if check:
+            #     break
+            if len(set(candies)) == 1: break
             roof += 1
             roof_list = [0] * n
             for i in range(n):
