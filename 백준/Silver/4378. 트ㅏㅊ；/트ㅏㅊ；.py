@@ -1,53 +1,14 @@
-d = {
-    "1": "`",
-    "2": "1",
-    "3": "2",
-    "4": "3",
-    "5": "4",
-    "6": "5",
-    "7": "6",
-    "8": "7",
-    "9": "8",
-    "0": "9",
-    "-": "0",
-    "=": "-",
-    "W": "Q",
-    "E": "W",
-    "R": "E",
-    "T": "R",
-    "Y": "T",
-    "U": "Y",
-    "I": "U",
-    "O": "I",
-    "P": "O",
-    "[": "P",
-    "]": "[",
-    "\\": "]",
-    "S": "A",
-    "D": "S",
-    "F": "D",
-    "G": "F",
-    "H": "G",
-    "J": "H",
-    "K": "J",
-    "L": "K",
-    ";": "L",
-    "'": ";",
-    "X": "Z",
-    "C": "X",
-    "V": "C",
-    "B": "V",
-    "N": "B",
-    "M": "N",
-    ",": "M",
-    ".": ",",
-    "/": ".",
-    " ": " "
-}
+import sys
+keyboard = "`1234567890-=QWERTYUIOP[]\\ASDFGHJKL;'ZXCVBNM,./"
+
 while True:
-    try:
-        for word in input():
-            print(d[word], end="")
+    words = sys.stdin.readline().rstrip()
+    if words:
+        for word in words:
+            if word != " ":
+                print(keyboard[keyboard.index(word)-1], end="")
+            else:
+                print(" ", end="")
         print()
-    except:
+    else:
         break
