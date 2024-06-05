@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 u, n = map(int, input().split())
 prices = [0] * 10001
 names = [[] for _ in range(10001)]
