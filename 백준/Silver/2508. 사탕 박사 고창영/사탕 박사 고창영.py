@@ -7,6 +7,14 @@ for _ in range(t):
     input()
     n, m = map(int, input().split())
     box = [input() for _ in range(n)]
+    for c in box:
+        ans += c.count(">o<")
+    for r in list(zip(*box)):
+        ans += ''.join(r).count("vo^")
+    print(ans)
+
+    # 느림
+    '''
     for i in range(n):
         for j in range(m):
             if box[i][j] == ">" and j+2 < m:
@@ -15,4 +23,4 @@ for _ in range(t):
             elif box[i][j] == "v" and i+2 < n:
                 if box[i+1][j] == "o" and box[i+2][j] == "^":
                     ans += 1
-    print(ans)
+    '''
