@@ -1,12 +1,13 @@
 import sys
+from collections import deque 
 input = sys.stdin.readline
 n = int(input())
-Q = []
+Q = deque()
 ans = [0, 0]
 for _ in range(n):
     info = list(map(int, input().split()))
     if len(info) == 1:
-        Q.pop(0)
+        Q.popleft()
     else:
         Q.append(info[1])
 
