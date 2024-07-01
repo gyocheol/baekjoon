@@ -1,10 +1,13 @@
+import sys
+input = sys.stdin.readline
+
 high, low = [], []
 flag = True
 while True:
     ollie = int(input())
     if ollie == 0:
         break
-    stan = input()
+    stan = input().strip()
     if stan == "too high":
         high.append(ollie)
     elif stan == "too low":
