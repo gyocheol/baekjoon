@@ -1,9 +1,5 @@
-# import sys
-# sys.stdin = open("4335.txt")
-
 high, low = [], []
 flag = True
-
 while True:
     ollie = int(input())
     if ollie == 0:
@@ -14,15 +10,12 @@ while True:
     elif stan == "too low":
         low.append(ollie)
     else:
-        for h in high:
-            if h < ollie or h == ollie:
+        if high:
+            if min(high) <= ollie:
                 flag = False
-                break
-        if flag:
-            for w in low:
-                if w > ollie or w == ollie:
-                    flag = False
-                    break
+        if low:
+            if max(low) >= ollie:
+                flag = False
         if flag:
             print("Stan may be honest")
         else:
