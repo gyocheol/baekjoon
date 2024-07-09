@@ -9,10 +9,6 @@ for _ in range(int(input())):
         r = int(order[1])-1
         arr[r] = [arr[r][-1]] + arr[r][:-1]
     else:
-        A = [[0] * n for _ in range(n)]
-        for i in range(n):
-            for j in range(n):
-                A[j][n-i-1] = arr[i][j]
-        arr = A
+        arr = list(map(list, zip(*arr[::-1])))
 for i in range(n):
     print(*arr[i])
