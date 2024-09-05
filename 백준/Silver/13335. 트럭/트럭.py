@@ -1,4 +1,6 @@
 from collections import deque
+import sys
+input = sys.stdin.readline
 
 n, w, L = map(int, input().split())
 trucks = deque(map(int, input().split()))
