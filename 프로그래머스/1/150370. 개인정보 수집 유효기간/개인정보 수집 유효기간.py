@@ -6,17 +6,14 @@ def solution(today, terms, privacies):
     total = {}
     for k, v in t.items():
         yy, mm = int(y), int(m)
-        if 12 < v:
+        if mm > v:
+            mm -= v
+        else:
             yy -= v//12
             mm -= v%12
             if mm <= 0:
                 yy -= 1
                 mm += 12
-        elif mm <= v:
-            yy -= 1
-            mm += 12 - v
-        else:
-            mm -= v
         total[k] = f"{yy}.{mm:02}.{d}"
     print(total)
     for i in range(len(privacies)):
