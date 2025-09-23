@@ -10,23 +10,16 @@ class Solution {
             indexMap.put(id_list[i], i);
         }
         
-        Map<String, List<String>> map = new HashMap<>();
-        for (String names : report) {
-            String[] name = names.split(" ");
+        Map<String, Set<String>> map = new HashMap<>();
+        for (String r : report) {
+            String[] name = r.split(" ");
             String to = name[0];
             String from = name[1];
             
-            // 신고를 받는 사람을 key로 두고 신고 하는 사람을 value로 저장
-            map.putIfAbsent(from, new ArrayList<>());
-            // 중복 신고 방지
-            if (!map.get(from).contains(to)) {
-                map.get(from).add(to);
-            }
+            map.computeIfAbsent(from, x -> new HashSet<>()).add(to);
         }
-        for (Map.Entry<String, List<String>> entry : map.entrySet()) {
-            String reportedUser = entry.getKey();
-            List<String> reporters = entry.getValue();
-            
+        for (Map.Entry<String, Set<String>> entry : map.entrySet()) {
+            Set<String> reporters = entry.getValue();
             if (reporters.size() >= k) {
                 for (String reporter : reporters) {
                     int idx = indexMap.get(reporter);
