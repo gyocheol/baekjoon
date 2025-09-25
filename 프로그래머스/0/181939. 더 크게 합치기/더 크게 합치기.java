@@ -1,7 +1,8 @@
 class Solution {
     public int solution(int a, int b) {
-        int ab = Integer.parseInt(String.valueOf(a)+b);
-        int ba = Integer.parseInt(String.valueOf(b)+a);
-        return ab >= ba ? ab : ba;
+        // int ab = Integer.parseInt(String.valueOf(a)+b);
+        // int ba = Integer.parseInt(String.valueOf(b)+a);
+        // return ab >= ba ? ab : ba;
+        return Math.max(Integer.parseInt(""+a+b), Integer.parseInt(""+b+a));
     }
 }
